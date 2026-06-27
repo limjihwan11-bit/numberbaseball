@@ -86,12 +86,16 @@ main { max-width: 1180px; margin: auto; padding: 62px 24px 74px; }
 .latest-call > div:first-child span { display: block; font-size: 10px; color: var(--muted); margin-bottom: 2px; }
 .latest-call > div:first-child strong { font: 600 24px Oswald, sans-serif; letter-spacing: .12em; color: var(--ink); }
 .empty-call p { margin: 0; color: var(--muted); font-size: 12px; }
-.result-badges { display: flex; gap: 5px; align-items: center; white-space: nowrap; }
-.badge { min-width: 45px; padding: 6px 7px; border-radius: 8px; text-align: center; font: 600 10px Oswald, sans-serif; letter-spacing: .03em; background: var(--paper); border: 1px solid var(--line); color: var(--muted); }
-.badge b { font-size: 14px; margin-right: 2px; }
-.badge.strike b { color: var(--coral); }
-.badge.ball b { color: var(--blue); }
-.badge.out b { color: var(--muted); }
+.result-badges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; align-items: stretch; white-space: nowrap; }
+.badge { min-width: 64px; padding: 7px 9px; border-radius: 10px; display: flex; align-items: baseline; justify-content: center; gap: 4px; text-align: center; border: 1px solid currentColor; font-weight: 800; }
+.badge b { font: 600 23px/1 Oswald, sans-serif; }
+.badge span { font-size: 14px; line-height: 1; letter-spacing: -.04em; }
+.badge.strike { color: #bd4935; background: rgba(232, 110, 87, .13); }
+.badge.ball { color: #276b82; background: rgba(62, 126, 146, .13); }
+.badge.out { color: #586963; background: rgba(117, 132, 127, .13); }
+:root[data-theme='dark'] .badge.strike { color: #ff9a86; }
+:root[data-theme='dark'] .badge.ball { color: #8dd0e3; }
+:root[data-theme='dark'] .badge.out { color: #bac9c4; }
 .eliminated-row { display: flex; align-items: center; gap: 7px; margin: -1px 28px 14px; font-size: 10px; color: var(--muted); }
 .eliminated-row > span { display: inline-flex; align-items: center; gap: 4px; margin-right: auto; }
 .eliminated-row b { padding: 4px 7px; border-radius: 6px; background: rgba(232,110,87,.1); color: var(--coral); }
@@ -119,7 +123,9 @@ main { max-width: 1180px; margin: auto; padding: 62px 24px 74px; }
 .history-list li { min-height: 62px; padding: 10px 7px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 8px; border-bottom: 1px dashed var(--line); }
 .history-list .turn { color: var(--muted); font: 500 10px Oswald, sans-serif; }
 .history-list li > strong { color: var(--ink); font: 600 20px Oswald, sans-serif; letter-spacing: .11em; }
-.history-list .badge { min-width: 38px; padding: 5px 4px; }
+.history-list .badge { min-width: 58px; padding: 6px 5px; }
+.history-list .badge b { font-size: 21px; }
+.history-list .badge span { font-size: 12px; }
 .empty-history { margin: auto; text-align: center; padding: 30px; }
 .baseball-seams { width: 74px; height: 74px; margin: 0 auto 18px; display: grid; place-items: center; border-radius: 50%; color: var(--coral); background: var(--paper-2); border: 1px solid var(--line); font: 600 24px Oswald, sans-serif; box-shadow: inset 0 0 0 7px var(--paper); transform: rotate(-8deg); }
 .empty-history strong { display: block; color: var(--ink); font-size: 14px; }
@@ -220,9 +226,17 @@ footer i { flex: 1; height: 1px; background: var(--line); }
   .at-bat { margin: 14px 17px 0; padding: 18px 16px 15px; }
   .number-display { gap: 9px; margin: 14px 0 17px; }
   .number-display span { width: min(68px, 21vw); height: 74px; font-size: 34px; }
-  .latest-call { margin: 11px 17px; padding: 11px 12px; }
+  .latest-call { margin: 11px 17px; padding: 12px; display: block; }
+  .latest-call .result-badges { margin-top: 9px; }
   .empty-call p { display: none; }
-  .badge { min-width: 40px; padding: 5px; }
+  .badge { min-width: 0; min-height: 46px; padding: 9px 5px; }
+  .badge b { font-size: 23px; }
+  .badge span { font-size: 13px; }
+  .history-list li { grid-template-columns: 28px 1fr; padding: 12px 7px; }
+  .history-list li .result-badges { grid-column: 1 / -1; width: 100%; }
+  .history-list .badge { min-width: 0; min-height: 44px; padding: 8px 5px; }
+  .history-list .badge b { font-size: 21px; }
+  .history-list .badge span { font-size: 12px; }
   .eliminated-row { margin: 0 17px 11px; }
   .keypad { margin: 0 17px; gap: 7px; }
   .keypad button { height: 48px; }

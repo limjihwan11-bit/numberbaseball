@@ -34,9 +34,9 @@ function Icon({ name, size = 20 }: { name: 'chart' | 'settings' | 'sun' | 'trash
 function ResultBadges({ strikes, balls, outs }: { strikes: number; balls: number; outs: number }) {
   return (
     <div className="result-badges" aria-label={`${strikes} 스트라이크, ${balls} 볼, ${outs} 아웃`}>
-      <span className="badge strike"><b>{strikes}</b> S</span>
-      <span className="badge ball"><b>{balls}</b> B</span>
-      <span className="badge out"><b>{outs}</b> O</span>
+      <span className="badge strike"><b>{strikes}</b><span>스트라이크</span></span>
+      <span className="badge ball"><b>{balls}</b><span>볼</span></span>
+      <span className="badge out"><b>{outs}</b><span>아웃</span></span>
     </div>
   )
 }
